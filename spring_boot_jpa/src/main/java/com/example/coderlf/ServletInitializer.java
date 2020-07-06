@@ -1,4 +1,4 @@
-package com.example.spring_boot_jpa;
+package com.example.coderlf;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

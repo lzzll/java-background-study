@@ -1,7 +1,7 @@
-package com.example.spring_boot_jpa.controller;
+package com.example.coderlf.sys.controller;
 
-import com.example.spring_boot_jpa.entity.User;
-import com.example.spring_boot_jpa.jpa.UserJpa;
+import com.example.coderlf.sys.entity.SysUserEntity;
+import com.example.coderlf.sys.jpa.SysUserJpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,17 +20,17 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
-    private UserJpa userJpa;
+    private SysUserJpa sysUserJpa;
 
     @RequestMapping("/listUser")
-    public List<User> listUser(){
-        List<User> users = userJpa.findAll();
-        return users;
+    public List<SysUserEntity> listUser(){
+        List<SysUserEntity> sysUsers = sysUserJpa.findAll();
+        return sysUsers;
     }
 
     @RequestMapping("/findUserById")
-    public User listUser(@RequestParam Long id){
-        Optional<User> user = userJpa.findById(id);
+    public SysUserEntity listUser(@RequestParam Long id){
+        Optional<SysUserEntity> user = sysUserJpa.findById(id);
         return user.get();
     }
 
