@@ -1,5 +1,6 @@
 package com.example.coderlf.sys.controller;
 
+import com.alibaba.druid.util.StringUtils;
 import com.example.coderlf.common.entity.ResponseEntity;
 import com.example.coderlf.common.util.MD5Util;
 import com.example.coderlf.sys.dto.SysUserDto;
@@ -11,7 +12,6 @@ import com.example.coderlf.sys.jpa.TokenJPA;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,11 +44,11 @@ public class TokenController {
     @RequestMapping(value = "/token", method = {RequestMethod.POST,RequestMethod.GET})
     public ResponseEntity token(@RequestParam String account, @RequestParam String secret){
         //appId is null
-        if(account == null || account.trim() == ""){
+        if(StringUtils.isEmpty(account)){
             return ResponseEntity.forbidden("appId is not found!");
         }
         //appSecret is null
-        else if(secret == null || secret.trim() == "")
+        else if(StringUtils.isEmpty(secret))
         {
             return ResponseEntity.forbidden("appSecret is not found!");
         }

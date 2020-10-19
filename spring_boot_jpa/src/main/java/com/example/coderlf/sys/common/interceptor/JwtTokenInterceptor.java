@@ -57,7 +57,6 @@ public class JwtTokenInterceptor implements HandlerInterceptor {
             final Claims claims = Jwts.parser().setSigningKey("HengYuAuthv1.0.0")
                     .parseClaimsJws(authHeader).getBody();
             //从数据库中获取token
-            TokenInfoEntity token = new TokenInfoEntity();
 //            TokenInfoEntity token = getDAO(TokenJPA.class,request).findOne(new Specification<TokenInfoEntity>() {
 //                @Override
 //                public Predicate toPredicate(Root<TokenInfoEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
@@ -66,16 +65,16 @@ public class JwtTokenInterceptor implements HandlerInterceptor {
 //                }
 //            });
             //数据库中的token值
-            String tokenval = new String(token.getUserToken());
+//            String tokenval = new String(token.getUserToken());
             //如果内存中不存在,提示客户端获取token
-            if(tokenval == null || tokenval.trim() == "") {
-                throw new SignatureException("not found token info, please get token agin.");
-            }
-            //判断内存中的token是否与客户端传来的一致
-            if(!tokenval.equals(authHeader))
-            {
-                throw new SignatureException("not found token info, please get token agin.");
-            }
+//            if(tokenval == null || tokenval.trim() == "") {
+//                throw new SignatureException("not found token info, please get token agin.");
+//            }
+//            //判断内存中的token是否与客户端传来的一致
+//            if(!tokenval.equals(authHeader))
+//            {
+//                throw new SignatureException("not found token info, please get token agin.");
+//            }
         }
         //验证异常处理
         catch (SignatureException | ExpiredJwtException e)
