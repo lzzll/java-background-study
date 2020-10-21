@@ -1,0 +1,12 @@
+# 此Url为连接activeMq的路径
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+# springBoot中集成activeMq默认只能监听queue类型的消息，此处开启topic类型消息的监听
+  jms:
+    pub-sub-domain: true
+
+
+# 配置不同环境下对应的队列配置文件名称
+config-queue:
+  name: devConfigQueueName.properties
