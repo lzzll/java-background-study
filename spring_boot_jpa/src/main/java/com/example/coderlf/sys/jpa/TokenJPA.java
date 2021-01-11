@@ -1,12 +1,11 @@
 package com.example.coderlf.sys.jpa;
 
-import com.example.coderlf.sys.dto.SysUserDto;
 import com.example.coderlf.sys.dto.TokenInfoDto;
-import com.example.coderlf.sys.entity.SysUserEntity;
-import com.example.coderlf.sys.entity.TokenInfoEntity;
+import com.example.coderlf.sys.entity.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
 
+import javax.transaction.Transactional;
 import java.io.Serializable;
 
 /**
@@ -15,15 +14,16 @@ import java.io.Serializable;
  * @Description:
  */
 public interface TokenJPA extends
-        JpaRepository<TokenInfoEntity, Long>,
-        JpaSpecificationExecutor<TokenInfoEntity>,
+        JpaRepository<Token, Long>,
         Serializable
 {
 
     /**
-     * 查询token对象
+     * 查询token对象,自定义方法中如果不写sql语句，会报创建Jpa失败的异常
      * @param tokenInfoDto
      * @return
      */
-    TokenInfoEntity findByEntity(TokenInfoDto tokenInfoDto);
+    @Transactional
+    @Query(value="SELECT * from api_token_infos WHERE id = 1",nativeQuery = true)
+    Token findByEntity(TokenInfoDto tokenInfoDto);
 }

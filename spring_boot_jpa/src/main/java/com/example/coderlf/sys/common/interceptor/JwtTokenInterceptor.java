@@ -1,25 +1,18 @@
 package com.example.coderlf.sys.common.interceptor;
 
-import com.example.coderlf.sys.entity.TokenInfoEntity;
-import com.example.coderlf.sys.jpa.TokenJPA;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.security.SignatureException;
-import java.util.function.Predicate;
 
 /**
  * @Author lf

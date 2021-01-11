@@ -5,10 +5,10 @@ import com.example.coderlf.common.entity.ResponseEntity;
 import com.example.coderlf.common.util.MD5Util;
 import com.example.coderlf.sys.dto.SysUserDto;
 import com.example.coderlf.sys.dto.TokenInfoDto;
-import com.example.coderlf.sys.entity.SysUserEntity;
-import com.example.coderlf.sys.entity.TokenInfoEntity;
-import com.example.coderlf.sys.jpa.SysUserJpa;
+import com.example.coderlf.sys.entity.Token;
+import com.example.coderlf.sys.entity.User;
 import com.example.coderlf.sys.jpa.TokenJPA;
+import com.example.coderlf.sys.jpa.UserRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class TokenController {
     private TokenJPA tokenJPA;
 
     @Autowired
-    private SysUserJpa sysUserJpa;
+    private UserRepository sysUserJpa;
 
     /**
      * 获取token，更新token
@@ -58,7 +58,7 @@ public class TokenController {
             //根据appId查询用户实体
             SysUserDto userDto = new SysUserDto();
             userDto.setAccount(account);
-            SysUserEntity userDbInfo = sysUserJpa.findByEntity(userDto);
+            User userDbInfo = sysUserJpa.findByEntity(userDto);
             // 用户不存在
             if (userDbInfo == null)
             {
@@ -73,7 +73,7 @@ public class TokenController {
             {
                 TokenInfoDto tokenInfoDto = new TokenInfoDto();
                 tokenInfoDto.setUserId(userDbInfo.getId());
-                TokenInfoEntity tokenEntity = tokenJPA.findByEntity(tokenInfoDto);
+                Token tokenEntity = tokenJPA.findByEntity(tokenInfoDto);
                 //返回token值
                 String tokenStr = null;
                 //tokenDBEntity == null -> 生成newToken -> 保存数据库 -> 写入内存 -> 返回newToken
@@ -82,7 +82,7 @@ public class TokenController {
                     //生成jwt,Token
                     tokenStr = createNewToken(account);
                     //将token保持到数据库
-                    TokenInfoEntity tokenInfoEntity = new TokenInfoEntity();
+                    Token tokenInfoEntity = new Token();
                     tokenInfoEntity.setUserId(userDbInfo.getId());
                     tokenInfoEntity.setBuildTime(String.valueOf(System.currentTimeMillis()));
                     tokenInfoEntity.setUserToken(tokenStr.getBytes());
