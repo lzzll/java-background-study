@@ -11,6 +11,11 @@ import lombok.Data;
 public class SysUserDto {
 
     /**
+     * 用户名
+     */
+    private String userName;
+
+    /**
      * 用户账户
      */
     private String account;

@@ -7,17 +7,23 @@ import com.example.coderlf.sys.dto.SysUserDto;
 import com.example.coderlf.sys.dto.TokenInfoDto;
 import com.example.coderlf.sys.entity.Token;
 import com.example.coderlf.sys.entity.User;
-import com.example.coderlf.sys.jpa.TokenJPA;
-import com.example.coderlf.sys.jpa.UserRepository;
+import com.example.coderlf.sys.jpa.token.TokenJPA;
+import com.example.coderlf.sys.jpa.user.UserDao;
+import com.example.coderlf.sys.jpa.user.UserRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.criteria.Predicate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -34,6 +40,10 @@ public class TokenController {
 
     @Autowired
     private UserRepository sysUserJpa;
+
+    @Autowired
+    private UserDao userDao;
+
 
     /**
      * 获取token，更新token
@@ -58,22 +68,23 @@ public class TokenController {
             //根据appId查询用户实体
             SysUserDto userDto = new SysUserDto();
             userDto.setAccount(account);
-            User userDbInfo = sysUserJpa.findByEntity(userDto);
+            // 方式一：原生jdbcTemplate底层查询
+            User user = userDao.findByEntity(userDto);
             // 用户不存在
-            if (userDbInfo == null)
+            if (user == null)
             {
                 return ResponseEntity.forbidden("account : " + account + ", is not found!");
             }
             // 验证用户密码是否正确，进行md5加密比较
-            else if (!new String(userDbInfo.getSecret()).equals(MD5Util.md5password(secret.trim())))
+            else if (!new String(user.getSecret()).equals(MD5Util.md5password(secret.trim())))
             {
                 return ResponseEntity.forbidden("appSecret is not effective!");
             }
             else
             {
-                TokenInfoDto tokenInfoDto = new TokenInfoDto();
-                tokenInfoDto.setUserId(userDbInfo.getId());
-                Token tokenEntity = tokenJPA.findByEntity(tokenInfoDto);
+                // 方式二：使用jpa查询
+//                Optional<Token> tokenInfo = tokenJPA.findOne(queryTokenSpecification);
+                Token tokenEntity = tokenJPA.findByEntity(user.getId());
                 //返回token值
                 String tokenStr = null;
                 //tokenDBEntity == null -> 生成newToken -> 保存数据库 -> 写入内存 -> 返回newToken
@@ -83,7 +94,7 @@ public class TokenController {
                     tokenStr = createNewToken(account);
                     //将token保持到数据库
                     Token tokenInfoEntity = new Token();
-                    tokenInfoEntity.setUserId(userDbInfo.getId());
+                    tokenInfoEntity.setUserId(user.getId());
                     tokenInfoEntity.setBuildTime(String.valueOf(System.currentTimeMillis()));
                     tokenInfoEntity.setUserToken(tokenStr.getBytes());
                     tokenJPA.save(tokenInfoEntity);
@@ -140,7 +151,6 @@ public class TokenController {
                 .signWith(SignatureAlgorithm.HS256, "HengYuAuthv1.0.0")  // 加密方法
                 .compact();  // 设置序列化，url安全化
     }
-
 
 
 

@@ -93,10 +93,10 @@ public class MD5Util {
     }
 
     public static void main(String[] args) {
-        System.out.println(MD5Util.md5password("123wert"));
-        System.out.println(MD5Util.MD5("123"));
-        System.out.println(MD5Util.md5password(md5password(md5password("123"))));
-        System.out.println(MD5Util.JM(JM("123")));
+        System.out.println(MD5Util.md5password("aaa"));
+//        System.out.println(MD5Util.MD5("123"));
+//        System.out.println(MD5Util.md5password(md5password(md5password("123"))));
+//        System.out.println(MD5Util.JM(JM("123")));
     }
 
 }

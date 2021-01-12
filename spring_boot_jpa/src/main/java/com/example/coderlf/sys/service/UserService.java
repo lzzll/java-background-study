@@ -1,5 +1,6 @@
 package com.example.coderlf.sys.service;
 
+import com.example.coderlf.sys.dto.SysUserDto;
 import com.example.coderlf.sys.entity.User;
 
 import java.util.List;
@@ -46,4 +47,11 @@ public interface UserService {
      * @param id the id
      */
     void delete(long id);
+
+    /**
+     * 自己封装方法查询数据
+     * @param sysUserDto
+     * @return
+     */
+    User getUserByEntity(SysUserDto sysUserDto);
 }
