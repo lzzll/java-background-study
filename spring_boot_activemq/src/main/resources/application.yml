@@ -1,11 +1,28 @@
-# 此Url为连接activeMq的路径
+server:
+  max-http-header-size: 204800
+  port: 8090
+  servlet:
+    context-path: /activemq
+
 spring:
   activemq:
     broker-url: tcp://localhost:61616
-# springBoot中集成activeMq默认只能监听queue类型的消息，此处开启topic类型消息的监听
-  jms:
-    pub-sub-domain: true
-
+    #true 表示使用内置的MQ，false则连接activemq服务器
+    in-memory: false
+    user: admin
+    password: admin
+    # 如果是true,则是Topic；如果是false或者默认，则是queue。
+    jms:
+      # 默认是false，表示只能监听处理queue的队列消息，如果设置为true则topic发布订阅消息和队列消息都可以监听处理
+      pub-sub-domain: true
+    pool:
+      #true表示使用连接池；false时，每发送一条数据创建一个连接
+      # 使用queue(点对点)方式是，pool.enable要设置为false，默认使用的是queue方式，使用topic(订阅)方式是设置为true,同时要添加spring.jms.pub-sub-domain=true
+      enabled: false
+      #连接池最大连接数
+      max-connections: 10
+      #空闲的连接过期时间，默认为30秒
+      idle-timeout: 30s
 
 # 配置不同环境下对应的队列配置文件名称
 config-queue:
