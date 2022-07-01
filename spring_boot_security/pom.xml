@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.java.background.study</groupId>
-	<artifactId>spring_security</artifactId>
+	<artifactId>spring_boot_security</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring_security</name>
 	<description>Demo project for Spring Boot</description>
@@ -35,7 +35,7 @@
 
 		<!--<dependency>-->
 			<!--<groupId>mysql</groupId>-->
-			<!--<artifactId>mysql-connector-java</artifactId>-->
+			<!--<artifactId>mysql-connector-example</artifactId>-->
 			<!--<scope>runtime</scope>-->
 		<!--</dependency>-->
 		<!--<dependency>-->

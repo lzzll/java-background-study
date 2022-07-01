@@ -1,4 +1,4 @@
-package com.java.background.study.spring_security.common;
+package com.example.lzzll.spring_security.common;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
