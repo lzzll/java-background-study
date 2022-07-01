@@ -1,4 +1,4 @@
-package com.code.lzzll;
+package com.code.example.lzzll;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,11 +1,15 @@
-package com.code.lzzll.mongodb.controller;
+package com.code.example.lzzll.mongodb.controller;
 
-import com.code.lzzll.common.R;
-import com.code.lzzll.mongodb.entity.StudyTest;
-import com.code.lzzll.mongodb.service.MongoDbService;
+import com.code.example.lzzll.common.R;
+import com.code.example.lzzll.mongodb.entity.StudyTest;
+import com.code.example.lzzll.mongodb.service.MongoDbService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @Author lf
@@ -56,13 +60,33 @@ public class MongoDbController {
     }
 
     /**
-     * 查询数据
+     * 查询所有的数据
      * @return
      */
-    @RequestMapping("/queryData")
-    public R queryData(){
-        StudyTest study = mongoDbService.queryData();
+    @RequestMapping("/queryAll")
+    public R queryAll(){
+        List<StudyTest> studys = mongoDbService.queryAll();
+        return R.ok().put("data",studys);
+    }
+
+    /**
+     * 根据id查询数据
+     * @return
+     */
+    @RequestMapping("/queryById")
+    public R queryById(@RequestParam String id){
+        StudyTest study = mongoDbService.queryById(id);
         return R.ok().put("data",study);
+    }
+
+    /**
+     * 根据试题类查询数据
+     * @return
+     */
+    @RequestMapping("/queryByEntity")
+    public R queryByEntity(@RequestBody StudyTest andParam,@RequestBody StudyTest orParam,@RequestBody StudyTest notParam){
+        List<StudyTest> studys = mongoDbService.queryByEntity(andParam,orParam,notParam);
+        return R.ok().put("data",studys);
     }
 
     /**

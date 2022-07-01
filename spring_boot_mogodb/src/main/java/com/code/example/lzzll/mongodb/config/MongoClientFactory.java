@@ -1,4 +1,4 @@
-package com.code.lzzll.mongodb.config;
+package com.code.example.lzzll.mongodb.config;
 
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
@@ -14,7 +14,7 @@ import java.util.List;
  * @Date 2020/9/10 11:37
  * @Description: mongoDb的配置类
  */
-//@Component
+@Component
 public class MongoClientFactory {
 
     private static final String MONGO_IP = "127.0.0.1";
@@ -51,7 +51,7 @@ public class MongoClientFactory {
      * 通过方法获取mongoDb数据库的连接
      * @return
      */
-    private static MongoClient initClient(){
+//    private static MongoClient initClient(){
 //        //连接到MongoDB服务 如果是远程连接可以替换“localhost”为服务器所在IP地址
 //        //ServerAddress()两个参数分别为 服务器地址 和 端口
 //        ServerAddress serverAddress = new ServerAddress(MONGO_IP,MONGO_PORT);
@@ -65,9 +65,9 @@ public class MongoClientFactory {
 //
 //        //通过连接认证获取MongoDB连接
 //        mongoClient = new MongoClient(addrs,credentials);
-        return mongoClient;
-
-    }
+//        return mongoClient;
+//
+//    }
 
 
 

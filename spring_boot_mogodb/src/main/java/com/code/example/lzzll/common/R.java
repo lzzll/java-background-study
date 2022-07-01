@@ -1,4 +1,4 @@
-package com.code.lzzll.common;
+package com.code.example.lzzll.common;
 
 import org.springframework.http.HttpStatus;
 

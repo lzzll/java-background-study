@@ -1,4 +1,4 @@
-package com.code.lzzll;
+package com.code.example.lzzll;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

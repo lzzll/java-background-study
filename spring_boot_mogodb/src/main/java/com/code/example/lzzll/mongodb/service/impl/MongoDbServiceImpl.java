@@ -1,7 +1,7 @@
-package com.code.lzzll.mongodb.service.impl;
+package com.code.example.lzzll.mongodb.service.impl;
 
-import com.code.lzzll.mongodb.entity.StudyTest;
-import com.code.lzzll.mongodb.service.MongoDbService;
+import com.code.example.lzzll.mongodb.entity.StudyTest;
+import com.code.example.lzzll.mongodb.service.MongoDbService;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import org.bson.types.ObjectId;
@@ -11,6 +11,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -29,11 +31,50 @@ public class MongoDbServiceImpl implements MongoDbService {
 
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int insertData(StudyTest study) {
         StudyTest insertStudy = mongoTemplate.insert(study);
         String id = insertStudy.getId();
         System.out.println(id);
         return 0;
+    }
+
+    @Override
+    public List<StudyTest> queryAll() {
+        return mongoTemplate.findAll(StudyTest.class);
+    }
+
+    @Override
+    public StudyTest queryById(String id) {
+//        return mongoTemplate.findById(id, StudyTest.class);
+        Query query = new Query(Criteria.where("_id").is(new ObjectId(id)));
+        return mongoTemplate.findOne(query, StudyTest.class);
+    }
+
+    @Override
+    public List<StudyTest> queryByEntity(StudyTest andParam,StudyTest orParam,StudyTest notParam) {
+        Criteria criteria = new Criteria();
+        // 拼接"and"条件
+        if (!StringUtils.isEmpty(andParam.getId())){
+            criteria.and("id").is(andParam.getId());
+        }
+        if (!StringUtils.isEmpty(andParam.getStudy())){
+            criteria.and("study").is(andParam.getStudy());
+        }
+        // 拼接"or"条件
+        if (orParam != null){
+            Criteria orCriteria = new Criteria();
+            if (!StringUtils.isEmpty(orParam.getId())){
+                orCriteria.and("id").is(andParam.getId());
+            }
+            if (!StringUtils.isEmpty(andParam.getStudy())){
+                criteria.and("study").is(andParam.getStudy());
+            }
+            criteria.orOperator(orCriteria);
+        }
+        // 拼接"not"条件
+        Query query = new Query(criteria);
+        return mongoTemplate.find(query,StudyTest.class);
     }
 
 
