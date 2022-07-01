@@ -1,4 +1,4 @@
-package com.example.coderlf.socketclient.service;
+package com.example.lzzll.socketclient.service;
 
 /**
  * Created by hui.yunfei@qq.com on 2019/5/31

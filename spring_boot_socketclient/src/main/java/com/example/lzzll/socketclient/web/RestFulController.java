@@ -1,13 +1,12 @@
-package com.example.coderlf.socketclient.web;
+package com.example.lzzll.socketclient.web;
 
-import com.example.coderlf.socketclient.model.ReceiveMessage;
-import com.example.coderlf.socketclient.service.RestFulService;
+import com.example.lzzll.socketclient.model.ReceiveMessage;
+import com.example.lzzll.socketclient.service.RestFulService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.user.SimpUser;
 import org.springframework.messaging.simp.user.SimpUserRegistry;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

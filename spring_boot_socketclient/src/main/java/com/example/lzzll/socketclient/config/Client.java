@@ -1,4 +1,4 @@
-package com.example.coderlf.socketclient.config;
+package com.example.lzzll.socketclient.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

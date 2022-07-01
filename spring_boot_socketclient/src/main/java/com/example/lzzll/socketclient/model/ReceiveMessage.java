@@ -1,4 +1,4 @@
-package com.example.coderlf.socketclient.model;
+package com.example.lzzll.socketclient.model;
 
 import lombok.ToString;
 

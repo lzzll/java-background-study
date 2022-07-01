@@ -1,4 +1,4 @@
-package com.example.coderlf.socketclient;
+package com.example.lzzll.socketclient;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

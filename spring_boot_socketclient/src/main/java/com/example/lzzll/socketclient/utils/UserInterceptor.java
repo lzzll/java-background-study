@@ -1,6 +1,6 @@
-package com.example.coderlf.socketclient.utils;
+package com.example.lzzll.socketclient.utils;
 
-import com.example.coderlf.socketclient.model.User;
+import com.example.lzzll.socketclient.model.User;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;

@@ -1,6 +1,6 @@
-package com.example.coderlf.socketclient.config;
+package com.example.lzzll.socketclient.config;
 
-import com.example.coderlf.socketclient.service.RestFulService;
+import com.example.lzzll.socketclient.service.RestFulService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

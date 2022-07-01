@@ -1,6 +1,6 @@
-package com.example.coderlf.socketclient.config;
+package com.example.lzzll.socketclient.config;
 
-import com.example.coderlf.socketclient.utils.UserInterceptor;
+import com.example.lzzll.socketclient.utils.UserInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.ChannelRegistration;
