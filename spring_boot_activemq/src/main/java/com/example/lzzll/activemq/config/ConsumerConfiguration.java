@@ -1,4 +1,4 @@
-package com.example.coderlf.activemq.consumer;
+package com.example.lzzll.activemq.config;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,7 +12,7 @@ import javax.jms.ConnectionFactory;
 /**
  * @Author lf
  * @Date 2020/10/21 16:48
- * @Description:
+ * @Description: Queue为点对点模式，即有一个消息，才能有一个消费，多个消费者不会重复对应一个消息
  */
 @Configuration
 public class ConsumerConfiguration {

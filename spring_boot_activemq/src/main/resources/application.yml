@@ -1,6 +1,6 @@
 server:
   max-http-header-size: 204800
-  port: 8090
+  port: 8080
   servlet:
     context-path: /activemq
 

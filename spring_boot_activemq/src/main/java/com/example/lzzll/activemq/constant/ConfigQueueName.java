@@ -1,4 +1,4 @@
-package com.example.coderlf.activemq.constant;
+package com.example.lzzll.activemq.constant;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -14,7 +14,7 @@ public class ConfigQueueName {
     public static String queueName;
 
     @Value("${config-queue.name}")
-    private void setQueueName(String name){
-        this.queueName = name;
+    public void setQueueName(String name){
+        ConfigQueueName.queueName = name;
     }
 }

@@ -1,6 +1,5 @@
-package com.example.coderlf.activemq.consumer;
+package com.example.lzzll.activemq.consumer;
 
-import com.example.coderlf.activemq.constant.DestinationConstant;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 

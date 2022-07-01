@@ -1,4 +1,4 @@
-package com.example.coderlf.activemq.service;
+package com.example.lzzll.activemq.service;
 
 /**
  * @Author lf

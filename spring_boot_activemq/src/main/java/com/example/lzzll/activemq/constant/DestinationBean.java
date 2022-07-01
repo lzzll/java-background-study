@@ -1,4 +1,4 @@
-package com.example.coderlf.activemq.constant;
+package com.example.lzzll.activemq.constant;
 
 import lombok.Data;
 import org.apache.activemq.command.ActiveMQQueue;

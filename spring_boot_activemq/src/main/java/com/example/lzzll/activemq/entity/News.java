@@ -1,4 +1,4 @@
-package com.example.coderlf.activemq.entity;
+package com.example.lzzll.activemq.entity;
 
 import lombok.Data;
 import lombok.ToString;

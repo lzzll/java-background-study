@@ -1,7 +1,7 @@
-package com.example.coderlf.activemq.service.impl;
+package com.example.lzzll.activemq.service.impl;
 
-import com.example.coderlf.activemq.constant.DestinationBean;
-import com.example.coderlf.activemq.service.PublishService;
+import com.example.lzzll.activemq.constant.DestinationBean;
+import com.example.lzzll.activemq.service.PublishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.stereotype.Service;

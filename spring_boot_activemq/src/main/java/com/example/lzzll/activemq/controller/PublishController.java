@@ -1,6 +1,6 @@
-package com.example.coderlf.activemq.controller;
+package com.example.lzzll.activemq.controller;
 
-import com.example.coderlf.activemq.service.PublishService;
+import com.example.lzzll.activemq.service.PublishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,10 +36,8 @@ public class PublishController {
      */
     @RequestMapping("/user")
     public String userPublish(@RequestParam String message, @RequestParam int msgCode){
-
         userPublishService.pushMsg(message,msgCode);
         return "success";
-
     }
 
 
