@@ -94,6 +94,7 @@ public class StringUtil {
         if ("null".equals(str.trim().toLowerCase())){
             return "略";
         }
+        System.out.println("aaaa");
         return str;
     }
 
