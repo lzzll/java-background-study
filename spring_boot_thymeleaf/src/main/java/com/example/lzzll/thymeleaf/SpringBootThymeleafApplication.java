@@ -1,4 +1,4 @@
-package com.example.coderlf.thymeleaf;
+package com.example.lzzll.thymeleaf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

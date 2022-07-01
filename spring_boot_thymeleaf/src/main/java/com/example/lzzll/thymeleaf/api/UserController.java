@@ -1,7 +1,7 @@
-package com.example.coderlf.thymeleaf.api;
+package com.example.lzzll.thymeleaf.api;
 
-import com.example.coderlf.thymeleaf.model.User;
-import com.example.coderlf.thymeleaf.service.UserService;
+import com.example.lzzll.thymeleaf.model.User;
+import com.example.lzzll.thymeleaf.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,6 +1,6 @@
-package com.example.coderlf.thymeleaf.api;
+package com.example.lzzll.thymeleaf.api;
 
-import com.example.coderlf.thymeleaf.model.BaseApiResponse;
+import com.example.lzzll.thymeleaf.model.BaseApiResponse;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created in 2018.05.15
  * <p/>
  *
- * @author <a href="https://github.com/liaozihong" style="background: #55a7e3;">Liaozihong</a>
+ * @author <a href="https://github.com/liaozihong" style="lzzll: #55a7e3;">Liaozihong</a>
  */
 @RestController
 @RequestMapping("/docker")

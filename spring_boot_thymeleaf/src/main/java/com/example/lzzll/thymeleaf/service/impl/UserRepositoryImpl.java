@@ -1,8 +1,8 @@
-package com.example.coderlf.thymeleaf.service.impl;
+package com.example.lzzll.thymeleaf.service.impl;
 
-import com.example.coderlf.thymeleaf.model.User;
-import com.example.coderlf.thymeleaf.service.UserRepository;
-import com.example.coderlf.thymeleaf.service.UserService;
+import com.example.lzzll.thymeleaf.model.User;
+import com.example.lzzll.thymeleaf.service.UserRepository;
+import com.example.lzzll.thymeleaf.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * Created in 2018.07.25
  * <p/>
  *
- * @author <a href="https://github.com/liaozihong" style="background: #55a7e3;">Liaozihong</a>
+ * @author <a href="https://github.com/liaozihong" style="lzzll: #55a7e3;">Liaozihong</a>
  */
 @Service
 public class UserRepositoryImpl implements UserService {

@@ -1,7 +1,7 @@
-package com.example.coderlf.thymeleaf.service;
+package com.example.lzzll.thymeleaf.service;
 
 
-import com.example.coderlf.thymeleaf.model.User;
+import com.example.lzzll.thymeleaf.model.User;
 
 import java.util.List;
 

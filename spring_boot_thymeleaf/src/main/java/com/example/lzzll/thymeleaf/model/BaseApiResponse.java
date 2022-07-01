@@ -1,4 +1,4 @@
-package com.example.coderlf.thymeleaf.model;
+package com.example.lzzll.thymeleaf.model;
 
 /**
  * Base api response
@@ -6,7 +6,7 @@ package com.example.coderlf.thymeleaf.model;
  * Created in 2018.07.25
  * <p/>
  *
- * @author <a href="https://github.com/liaozihong" style="background: #55a7e3;">Liaozihong</a>
+ * @author <a href="https://github.com/liaozihong" style="lzzll: #55a7e3;">Liaozihong</a>
  */
 public class BaseApiResponse {
     private int id;
