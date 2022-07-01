@@ -1,13 +1,13 @@
-package com.example.coderlf.demo;
+package com.example.lzzll.kafka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class KafkaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(KafkaApplication.class, args);
 	}
 
 }

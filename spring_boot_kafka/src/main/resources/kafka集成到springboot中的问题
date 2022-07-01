@@ -1,0 +1,27 @@
+1、springBoot kafka在使用时必须安装zookeeper和kafka，安装和配置可在网上查找教程；
+	配置了环境变量的zookeeper在windows系统下启动命令：zkServer.cmd
+	kafka未配置环境变量在windows下启动命令：G:\tools\kafka\kafka_2.12-2.6.0\bin\windows\kafka-server-start.bat  G:\tools\kafka\kafka_2.12-2.6.0/config/server.properties  前面是kafka安装目录
+	启动时的问题：先启动zookeeper再启动kafka，若kafka启动失败，可在logs下把上次启动产生的日志都给删掉再重启
+2、启动kafka之后需要创建主题（topic），指定分区，每个分区默认只能被一个消费者消费，如果监听了多个分区可以多消费者同时消费
+创建topic命令：G:\tools\kafka\kafka_2.12-2.6.0\bin\windows\kafka-topics.bat --zookeeper localhost:2181 --create --topic test_topic --partitions 2 --replication-factor 1
+    创建一个名为test-topic的主题，两个分区，一个副本因子
+查看topic详情命令：G:\tools\kafka\kafka_2.12-2.6.0\bin\windows\kafka-topics.bat --describe --zookeeper localhost:2181 --topic test_topic
+修改topic分区命令：G:\tools\kafka\kafka_2.12-2.6.0\bin\windows\kafka-topics.bat --alter --zookeeper localhost:2181 --topic test_topic --partitions 3
+
+3、代码端的配置问题：代码中kafka服务器配置，可用localhost:端口，127.0.0.1:端口，内网ip:端口，域名:端口号四种形式
+   配置如下：
+    bootstrap-servers: localhost:9092
+    bootstrap-servers: 192.168.30.100:9092
+    bootstrap-servers: 127.0.0.1:9092
+    bootstrap-servers: ti.canpoint.cn:9092（配置ti.canpoint.cn映射的ip为localhost）
+4、配置类中使用@value（）注解注入配置数据时，下面的变量不能用static修饰
+	正确
+	@Value("${spring.kafka.bootstrap-servers}")
+    private String servers;
+	错误
+	@Value("${spring.kafka.bootstrap-servers}")
+    private static String servers;
+5、多个消费者监听kafka消费信息
+	注解配置
+	1、@KafkaListener(topics = "test_topic",groupId = "test") 默认只消费一个分区的信息
+	2、@KafkaListener(containerGroup="test",topicPartitions = {@TopicPartition(topic = "test_topic",partitions = {"0","1","2"})})  可监听test_topic主题下0，1，2三个分区的消息进行消费
