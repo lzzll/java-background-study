@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="activemq" />
+        <module name="demo" />
+        <module name="mongodb" />
+        <module name="socketclient" />
+        <module name="spring_boot_jpa" />
+        <module name="spring_boot_thymeleaf" />
+        <module name="spring_security" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="activemq" target="1.8" />
+      <module name="demo" target="1.8" />
+      <module name="mongodb" target="8" />
+      <module name="socketclient" target="1.8" />
+      <module name="spring_boot_jpa" target="1.8" />
+      <module name="spring_boot_thymeleaf" target="1.8" />
+      <module name="spring_security" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring_boot_activemq/activemq.iml" filepath="$PROJECT_DIR$/spring_boot_activemq/activemq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_boot_websocket/demo.iml" filepath="$PROJECT_DIR$/spring_boot_websocket/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/java-background-study.iml" filepath="$PROJECT_DIR$/.idea/java-background-study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_boot_mogodb/mongodb.iml" filepath="$PROJECT_DIR$/spring_boot_mogodb/mongodb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_boot_socketclient/socketclient.iml" filepath="$PROJECT_DIR$/spring_boot_socketclient/socketclient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_boot_jpa/spring_boot_jpa.iml" filepath="$PROJECT_DIR$/spring_boot_jpa/spring_boot_jpa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_boot_thymeleaf/spring_boot_thymeleaf.iml" filepath="$PROJECT_DIR$/spring_boot_thymeleaf/spring_boot_thymeleaf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_security/spring_security.iml" filepath="$PROJECT_DIR$/spring_security/spring_security.iml" />
+    </modules>
+  </component>
+</project>

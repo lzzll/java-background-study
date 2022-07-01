@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/spring_boot_activemq" />
+    <file type="web" url="file://$PROJECT_DIR$/spring_boot_jpa" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/spring_boot_jpa/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_boot_activemq/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_boot_mogodb/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_boot_socketclient/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_boot_thymeleaf/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_boot_websocket/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_security/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>
