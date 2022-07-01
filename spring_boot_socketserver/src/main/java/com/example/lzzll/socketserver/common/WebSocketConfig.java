@@ -1,15 +1,10 @@
-package com.example.coderlf.demo.common;
+package com.example.lzzll.socketserver.common;
 
 import io.goeasy.GoEasy;
 import lombok.extern.slf4j.Slf4j;
-import org.java_websocket.client.WebSocketClient;
-import org.java_websocket.drafts.Draft_6455;
-import org.java_websocket.handshake.ServerHandshake;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
-
-import java.net.URI;
 
 /**
  * @Author lf

@@ -1,6 +1,6 @@
-package com.example.coderlf.demo.controller;
+package com.example.lzzll.socketserver.controller;
 
-import com.example.coderlf.demo.service.WebSocketService;
+import com.example.lzzll.socketserver.service.WebSocketService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

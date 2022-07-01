@@ -1,4 +1,4 @@
-package com.example.coderlf.demo.common;
+package com.example.lzzll.socketserver.common;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example.coderlf</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>socketserverdemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demo</name>
 	<description>webSocket demo</description>

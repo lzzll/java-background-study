@@ -1,6 +1,6 @@
-package com.example.coderlf.demo.service.impl;
+package com.example.lzzll.socketserver.service.impl;
 
-import com.example.coderlf.demo.service.WebSocketService;
+import com.example.lzzll.socketserver.service.WebSocketService;
 import org.java_websocket.client.WebSocketClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
