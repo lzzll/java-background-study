@@ -1,4 +1,4 @@
-package com.example.lzzll.spring_security.controller;
+package com.example.lzzll.security.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

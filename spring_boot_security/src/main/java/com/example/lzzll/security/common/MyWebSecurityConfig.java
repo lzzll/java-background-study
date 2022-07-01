@@ -1,4 +1,4 @@
-package com.example.lzzll.spring_security.common;
+package com.example.lzzll.security.common;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
