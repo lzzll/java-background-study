@@ -1,0 +1,3 @@
+1、添加oauth的相关依赖；
+    见pom文件中oauth部分的相关依赖
+2、需要在security配置文件中初始化AuthenticationManager配置，该配置在oauth中会用到；
