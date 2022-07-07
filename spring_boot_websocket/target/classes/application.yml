@@ -1,7 +1,0 @@
-# Tomcat
-server:
-  tomcat:
-    uri-encoding: UTF-8
-  port: 8085
-  servlet:
-    context-path: /webSocket-server

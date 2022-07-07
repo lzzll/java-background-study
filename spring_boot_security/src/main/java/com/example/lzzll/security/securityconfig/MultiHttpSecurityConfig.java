@@ -1,4 +1,4 @@
-package com.example.lzzll.security.common;
+package com.example.lzzll.security.securityconfig;
 
 import com.example.lzzll.security.service.SecurityUserService;
 import org.springframework.beans.factory.annotation.Autowired;
