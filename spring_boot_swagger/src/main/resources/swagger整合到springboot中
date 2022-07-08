@@ -1,0 +1,14 @@
+参照博客：https://blog.csdn.net/system_cls/article/details/124180864
+
+1、导入swagger需要用到的两个依赖（见pom文件）。如果springboot和swagger版本不兼容可能报错；
+2、编写swagger的配置文件（见SwaggerConfig）；
+3、在接口和定义的返回类以及试题类上分别用注解标注用以swagger进行扫描；
+4、启动项目，访问网址：http://localhost:8000/swagger-ui.html 即可看见swagger对应的页面；
+5、如果需要美化swagger的页面，导入美化的依赖（见pom文件），重启项目，访问网址：http://localhost:8080/doc.html#/home；
+6、导出md格式的接口文档，需要引入导出的四个相关依赖（见pom文件），关闭项目，运行测试类中的测试方法即可导出；
+
+注意：
+    1、swagger的版本和springBoot有些版本不兼容，遇见不兼容的版本需要增加配置；
+    2、SwaggerConfig的配置文件中指定的扫描包必须按照项目路径来指定，否则接口文档不会生成；
+    3、定义接口时如果没有指定具体的访问方法，会生成多个不同访问类型的接口文档；
+        如指定@RequestMapping()不指定具体是get还是post，会生成多个接口文档；
