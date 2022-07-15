@@ -2,12 +2,14 @@ CREATE DATABASE  if not EXISTS shiro;
 
 use shiro;
 DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user`  (
+CREATE TABLE `user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键id',
   `user_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户名称',
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户密码',
+  `salt` varchar(255) NOT NULL COMMENT '盐',
+  `state` int(4) DEFAULT NULL COMMENT '账号的状态',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户表';
 
 DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE `user_role`  (

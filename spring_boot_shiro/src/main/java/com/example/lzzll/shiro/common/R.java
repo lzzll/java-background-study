@@ -32,9 +32,11 @@ public class R<T> {
     }
 
     public static R fail(String message){
-        R<Object> result = new R<>(500, "fail");
-        result.setMessage(message);
-        return result;
+        return new R<>(500, message);
+    }
+
+    public static R fail(int code,String message){
+        return new R<>(code, message);
     }
 
 }

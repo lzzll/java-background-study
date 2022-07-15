@@ -1,0 +1,11 @@
+springboot整合shiro要点：
+    1、引入shiro的依赖，见pom文件；
+    2、定义一个shiro的配置类，其中配置shiro的过滤器和安全管理器，认证规则等；见代码中ShiroConfig
+    3、定义shiro的认证规则和授权规则，定义一个认证类继承AuthorizingRealm并复写其中的认证方法和授权规则；见代码中MyShiroRealm
+    4、项目中登录认证交由shiro中的doGetAuthenticationInfo来进行处理，HomeController中的login接口用来处理是否登录成功的问题；
+    5、用户注册时密码的加密规则必须和shiroConfig中的凭证匹配器保持一致HashedCredentialsMatcher；
+    6、在不外接JWT这些额外的token认证的情况下，用户在浏览器上登录成功后Application的cookies中会有一个 "JSESSIONID = FEB9D6302796A77FC91CA18F88A8B7DB"的值存在
+        访问其它接口的时候需要设置一个请求头 {key = Cookie  value = JSESSIONID=FEB9D6302796A77FC91CA18F88A8B7DB}才能进行访问；
+
+springboot+mybatis+shiro中配置的权限认证在接口访问的时候不走的原因？
+

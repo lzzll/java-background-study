@@ -2,6 +2,7 @@ package com.example.lzzll.shiro.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Date;
  * @Description:
  */
 @Data
-public class UserRoleEntity extends RoleEntity{
+public class UserRole implements Serializable{
 
     /**
      * 主键id
@@ -36,7 +37,7 @@ public class UserRoleEntity extends RoleEntity{
     /**
      * 是否可用 0 不可用 1 可用
      */
-    private Integer isUse;
+    private Integer avaliable;
 
 
 }

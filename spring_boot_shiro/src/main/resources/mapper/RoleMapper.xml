@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.lzzll.shiro.mapper.RoleMapper">
+
+    <resultMap id="RolePermissionDto" type="com.example.lzzll.shiro.dto.RolePermissionDto">
+        <id column="id" property="id"/>
+        <id column="role_name" property="roleName"/>
+        <id column="description" property="description"/>
+        <id column="avaliable" property="avaliable"/>
+        <collection property="permissions" ofType="com.example.lzzll.shiro.entity.Permission">
+            <result column="permissionId" property="id"/>
+            <result column="available" property="available"/>
+            <result column="name" property="name"/>
+            <result column="parentId" property="parentId"/>
+            <result column="parentIds" property="parentIds"/>
+            <result column="permission" property="permission"/>
+            <result column="resourceType" property="resourceType"/>
+            <result column="url" property="url"/>
+        </collection>
+    </resultMap>
+    <select id="findByRoleIds" resultMap="RolePermissionDto">
+        SELECT t1.*,t3.id as permissionId,t3.available as permissionAvailable,t3.parent_id as parentId,t3.parent_ids as parentIds,t3.resource_type as resourceType,t3.url AS url,t3.name AS NAME,t3.available AS available from role t1 INNER join role_permission t2 on t1.id = t2.role_id INNER JOIN permission t3 on t2.permission_id = t3.id where t1.avaliable = 1 and t3.available = 1 and t1.id in
+        <foreach collection="roleIds" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

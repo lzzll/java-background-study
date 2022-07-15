@@ -2,13 +2,15 @@ package com.example.lzzll.shiro.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @Author lf
- * @Date 2022/7/6 17:16
+ * @Date 2022/7/11 15:25
  * @Description:
  */
 @Data
-public class RoleEntity {
+public class RolePermission implements Serializable{
 
     /**
      * 主键id
@@ -16,13 +18,12 @@ public class RoleEntity {
     private Long id;
 
     /**
-     * 角色名字
+     * 角色id
      */
-    private String roleName;
+    private Long roleId;
 
     /**
-     * 角色可访问的权限
+     * 权限id
      */
-    private String rolePath;
-
+    private Long permissionId;
 }

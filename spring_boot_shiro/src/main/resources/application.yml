@@ -5,11 +5,20 @@ server:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/security_oauth?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shiro?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: 123456
+
+  thymeleaf:
+     # 关闭页面缓存，便于开发环境测试
+     cache: false
+     # 静态资源路径
+     prefix: classpath:/templates/
+     # 网页资源默认.html结尾
+     mode: HTML
 
 mybatis:
   type-aliases-package: com.example.lzzll.shiro.entity
   mapper-locations: classpath:mapper/*.xml
+

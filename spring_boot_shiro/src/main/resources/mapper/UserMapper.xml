@@ -3,12 +3,29 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.lzzll.shiro.mapper.UserMapper">
-    <!-- 新增数据获取新增数据的主键 -->
+    <!-- 新增数据获取新增数据的主键 useGeneratedKeys 是否返回自增主键值  keyProperty 将值赋给哪个属性，这个属性是方法参数中的-->
     <insert id="insertUser" parameterType="com.example.lzzll.shiro.entity.User" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO USER (user_name,password) VALUES (#{userName},#{password});
+        INSERT INTO USER (user_name,password,salt,state) VALUES (#{userName},#{password},#{salt},#{state})
     </insert>
 
-    <!--<select id="queryByUserName" resultType="SecurityUser">-->
-        <!--select * from user where user_name = #{userName}-->
-    <!--</select>-->
+    <select id="findByUsername" resultType="com.example.lzzll.shiro.entity.User">
+        select * from user where user_name = #{userName}
+    </select>
+
+    <resultMap id="UserRoleDto" type="com.example.lzzll.shiro.dto.UserRoleDto">
+        <id column="id" property="id"/>
+        <id column="user_name" property="userName"/>
+        <id column="password" property="password"/>
+        <id column="salt" property="salt"/>
+        <id column="state" property="state"/>
+        <collection property="roleList" ofType="com.example.lzzll.shiro.entity.Role">
+            <result column="roleId" property="id"/>
+            <result column="roleName" property="roleName"/>
+            <result column="description" property="description"/>
+            <result column="avaliable" property="avaliable"/>
+        </collection>
+    </resultMap>
+    <select id="findByUserId" resultMap="UserRoleDto">
+        SELECT t1.*,t3.id as roleId,t3.role_name as roleName,t3.description AS description,t3.avaliable AS avaliable from user t1 left join user_role t2 on t1.id = t2.user_guid left JOIN role t3 on t2.role_id = t3.id where t1.id = #{userId} and t2.avaliable = 1 and t3.avaliable = 1
+    </select>
 </mapper>
