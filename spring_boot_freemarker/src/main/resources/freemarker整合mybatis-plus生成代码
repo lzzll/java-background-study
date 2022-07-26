@@ -1,0 +1,8 @@
+1、Invalid default: public abstract java.lang.Classorg.mybatis.spring.annotation .MapperScan.factoryBean()异常问题：
+    1、检查Application上面的@MapperScan({"com.example.lzzll.freemarker.mappers"})注解；
+    2、application.yml中的mybatis对应的地址要写对；
+    3、pom中引入的mybatis-plus的依赖必须是"mybatis-plus-boot-starter",不能是"mybatis-plus";
+
+2、访问接口时报页面不存在的错
+    1、返回的页面不用带templates这一级的路径；
+    2、页面不用带后缀，直接返回页面名称即可；
