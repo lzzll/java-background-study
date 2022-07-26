@@ -1,4 +1,4 @@
-package com.example.lzzll.thymeleaf.api;
+package com.example.lzzll.thymeleaf.controller;
 
 import com.example.lzzll.thymeleaf.model.BaseApiResponse;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class DockerController {
 
     /**
-     * Result base api response.
+     * Result base controller response.
      *
-     * @return the base api response
+     * @return the base controller response
      */
     @RequestMapping(value = "/")
     public BaseApiResponse result() {

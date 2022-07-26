@@ -1,4 +1,4 @@
-package com.example.lzzll.thymeleaf.api;
+package com.example.lzzll.thymeleaf.controller;
 
 import com.example.lzzll.thymeleaf.model.User;
 import com.example.lzzll.thymeleaf.service.UserService;
