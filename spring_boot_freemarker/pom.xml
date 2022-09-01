@@ -53,6 +53,17 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.12</version>
 		</dependency>
+		<!--  docx转换为pdf -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.17</version>
+		</dependency>
+		<dependency>
+			<groupId>fr.opensagres.xdocreport</groupId>
+			<artifactId>fr.opensagres.poi.xwpf.converter.pdf-gae</artifactId>
+			<version>2.0.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>

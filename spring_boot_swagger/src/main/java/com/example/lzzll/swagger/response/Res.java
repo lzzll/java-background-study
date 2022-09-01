@@ -34,6 +34,14 @@ public class Res<T> implements Serializable{
         this.message = message;
     }
 
+    public static Res ok(){
+        return new Res<>(200,"success");
+    }
+
+    public static Res fail(){
+        return new Res<>(500,"fail");
+    }
+
     /**
      * 静态方法可以定义泛型返回值
      * @param <T>
@@ -44,9 +52,13 @@ public class Res<T> implements Serializable{
         return result;
     }
 
-
-
-
+    /**
+     * 静态方法的参数不能带泛型
+     * @return
+     */
+//    public static Res ok(T data){
+//
+//    }
 
 
     public static void main(String[] args) {

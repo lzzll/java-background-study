@@ -15,6 +15,6 @@ public class JWTConfiguration extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new JwtTokenInterceptor()).addPathPatterns("/api/**");
+        registry.addInterceptor(new JwtTokenInterceptor()).addPathPatterns("/controller/**");
     }
 }

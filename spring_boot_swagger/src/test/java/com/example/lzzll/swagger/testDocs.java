@@ -39,10 +39,10 @@ public class testDocs
 				.withoutInlineSchema()
 				.build();
 		// 获取接口数据的url，请求方式是get，若没有分组则不需要group参数
-		URL apiUrl = new URL("http://localhost:8000/v2/api-docs?group="+group);
+		URL apiUrl = new URL("http://localhost:8000/v2/controller-docs?group="+group);
 
 		// 指定文件名称
-		String markdownFileName = "src/docs/markdown/generated/api";
+		String markdownFileName = "src/docs/markdown/generated/controller";
 
 		// 指定获取接口数据的url
 		Swagger2MarkupConverter.from(apiUrl)
