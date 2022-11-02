@@ -67,8 +67,12 @@
 			<version>2.1.0.RELEASE</version>
 			<exclusions>
 				<exclusion>
-					<artifactId>org.springframework.security.oauth.boot</artifactId>
-					<groupId>spring-security-oauth2-autoconfigure</groupId>
+					<artifactId>bcpkix-jdk15on</artifactId>
+					<groupId>org.bouncycastle</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+					<groupId>org.springframework.security.oauth.boot</groupId>
 				</exclusion>
 			</exclusions>
 		</dependency>

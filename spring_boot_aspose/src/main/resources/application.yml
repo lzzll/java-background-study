@@ -1,0 +1,10 @@
+server:
+  max-http-header-size: 204800
+  port: 8090
+  servlet:
+    context-path: /aspose
+
+spring:
+  # 环境 dev|test|prod
+  profiles:
+    active: dev
