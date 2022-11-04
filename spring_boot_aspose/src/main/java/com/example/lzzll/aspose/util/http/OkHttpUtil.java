@@ -7,10 +7,13 @@ import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.apache.commons.lang.exception.ExceptionUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Author lf
  * @Date 2022/11/2 17:09
- * @Description: 使用okHttp调用第三方接口的客户端
+ * @Description: 使用okHttp调用第三方接口的客户端，需要额外引入jar包 com.squareup.okhttp3
  */
 @Slf4j
 public class OkHttpUtil {
@@ -27,7 +30,7 @@ public class OkHttpUtil {
     /**
      * 通过表单的形式发送请求。json请求在定义参数的时候需要使用  public R getPdf(@RequestBody JSONObject jsonObject) {} 这种声明形式
      */
-    public static void askWithForm(){
+    public static void postWithForm(){
         try {
             // 调用Ai的网关接口，获取盒子的唯一识别码`
             long timestamp = System.currentTimeMillis();
@@ -66,7 +69,7 @@ public class OkHttpUtil {
     /**
      * 通过json的方式发送请求。json请求在定义参数的时候需要使用  public R getPdf(@RequestBody JSONObject jsonObject) {} 这种声明形式
      */
-    public static void askWithJson(){
+    public static void postWithJson(){
         try {
             // 调用Ai的网关接口，获取盒子的唯一识别码`
             long timestamp = System.currentTimeMillis();
@@ -106,12 +109,78 @@ public class OkHttpUtil {
 
     }
 
+    /**
+     * 发送get请求
+     */
+    public static JSONObject getWithParam(String url, Map<String,Object> param, Headers headers){
+        try {
+            if (param != null && param.size() != 0){
+                url += "?";
+                for (Map.Entry<String, Object> entry : param.entrySet()) {
+                    String key = entry.getKey();
+                    Object value = entry.getValue();
+                    if (value != null){
+                        url += key + "=" + value + "&";
+                    }
+                }
+                url = url.substring(0,url.length()-1);
+            }
+            OkHttpClient httpClient = new OkHttpClient();
+            // 设置请求时的各种不同参数
+//            httpClient.newBuilder().addInterceptor().connectTimeout()
 
-    public static void main(String[] args) {
-//        askWithForm();
-        askWithJson();
+            Request request = new Request
+                    .Builder()
+                    .get()
+                    .url(url)
+                    .headers(headers)
+                    .build();
+            final Call call = httpClient.newCall(request);
+            Response response = call.execute();
+            // 取消请求
+//            call.cancel();
+            if (!response.isSuccessful()) {
+                log.error("接口链接失败");
+            }
+            String result = response.body().string();
+            log.info("打印结果:{}", result);
+            JSONObject resultJson = JSONUtil.parseObj(result);
+            if (resultJson.containsKey("code") && "200".equals(resultJson.get("code").toString()) && resultJson.containsKey("data")) {
+                log.info(resultJson.getStr("data"));
+            } else {
+                log.error("获取接口数据失败");
+            }
+            return resultJson;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new JSONObject();
     }
 
 
+    public static void main(String[] args) {
+//        postWithForm();
+
+//        postWithJson();
+
+        // get有参请求测试
+//        HashMap<String, Object> map = new HashMap<>();
+//        map.put("pageNum",1);
+//        map.put("pageSize",1);
+//        Map<String, String> headers = new HashMap<>();
+//        headers.put("CANPOINTTOKEN","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyR3VpZCI6IlIyWlBNMjE0VUVnNVJHTm5aMEZ1UlRkUGJsRTVVVDA5IiwiZXhwIjoxNjY3NTMxNTkwfQ.TKmlfhye7kLk-ZdbuEc3TMR4lym2qPkR3fvNMw-jLYw");
+//        Headers header = Headers.of(headers);
+//        JSONObject json = getWithParam("http://39.105.162.131:8080/itembank-factory/tikuPreBatch/myPreBatchs", map,header);
+//        System.out.println(json);
+
+        // get无参请求测试
+        HashMap<String, Object> map = new HashMap<>();
+        Map<String, String> headers = new HashMap<>();
+        headers.put("CANPOINTTOKEN","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyR3VpZCI6IlIyWlBNMjE0VUVnNVJHTm5aMEZ1UlRkUGJsRTVVVDA5IiwiZXhwIjoxNjY3NTMxNTkwfQ.TKmlfhye7kLk-ZdbuEc3TMR4lym2qPkR3fvNMw-jLYw");
+        Headers header = Headers.of(headers);
+        JSONObject json = getWithParam("http://39.105.162.131:8080/itembank-factory/tikuPreBatch/queryPublishDepts", map, header);
+        System.out.println(json);
+
+    }
 
 }
