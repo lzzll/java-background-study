@@ -59,7 +59,7 @@ public class SignUtil {
             Request request = new Request
                     .Builder()
                     .get()
-                    .url("http://localhost:8080/sign/authen/getWithNoParam")
+                    .url("http://localhost:8090/aspose/sign/authen")
                     .headers(addSign())
                     .build();
             final Call call = httpClient.newCall(request);
