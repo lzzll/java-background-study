@@ -4,7 +4,7 @@
 2、编写swagger的配置文件（见SwaggerConfig）；
 3、在接口和定义的返回类以及试题类上分别用注解标注用以swagger进行扫描；
 4、启动项目，访问网址：http://localhost:8000/swagger-ui.html 即可看见swagger对应的页面；
-5、如果需要美化swagger的页面，导入美化的依赖（见pom文件），重启项目，访问网址：http://localhost:8080/doc.html#/home；
+5、如果需要美化swagger的页面，导入美化的依赖（见pom文件），重启项目，访问网址：http://localhost:8000/doc.html#/home；
 6、导出md格式的接口文档，需要引入导出的四个相关依赖（见pom文件），关闭项目，运行测试类中的测试方法即可导出；
 
 注意：
