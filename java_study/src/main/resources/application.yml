@@ -1,0 +1,60 @@
+
+server:
+  # tomcat:
+#    max-swallow-size: 100MB
+#    max-http-post-size: 100MB
+#    max-threads: 200
+  #    uri-encoding: UTF-8
+#    max-threads: 1000
+#    min-spare-threads: 30
+#  tomcat:
+#    max-http-post-size: 4MB
+  max-http-header-size: 204800
+  port: 8080
+  connection-timeout: 5000ms
+  servlet:
+    context-path: /itembank-factory
+
+spring:
+  # 环境 dev|test|prod
+  profiles:
+#    active: prod
+# springBoot2.4版本之前写法
+#    active: dev
+# springBoot2.4版本之后写法
+    config:
+        activate:
+          on-profile:
+          - dev
+  # jackson时间格式化
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+  application:
+    name: itembank-factory
+#  resources:
+#    add-mappings: false
+
+syste-domain: http://itembank-factory-console.canpoint.cn/ #系统域名
+#edu:
+##  redis:
+##    open: false
+##    open: true
+#  shiro:
+#    redis: false
+##    redis: true
+#  # APP模块，是通过jwt认证的，如果要使用APP模块，则需要修改【加密秘钥】
+#  jwt:
+#    # 加密秘钥
+#    secret: f4e2e52034348f86b67cde581c0f9eb5[www.edu.io]
+#    # token有效时长，7天，单位秒
+#    expire: 604800
+#    header: token

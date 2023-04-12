@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<students>
+
+    <student>
+        <name>步惊云</name>
+        <wepon>绝世好剑</wepon>
+        <sex>男</sex>
+    </student>
+
+    <student>
+        <name>聂风</name>
+        <wepon>血饮狂刀</wepon>
+        <sex>男</sex>
+    </student>
+
+</students>

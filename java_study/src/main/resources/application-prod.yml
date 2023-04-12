@@ -1,0 +1,162 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://cp-cloud-mysql-tiku-internal.canpoint.cn:3316/tiku?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+      username: u-tiku-rwx
+      password: 'tikuCp&*(2021'
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      #      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 120000
+      #Oracle需要打开注释
+      #validation-query: SELECT 1 FROM DUAL
+      #mysql
+      validation-query: select 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        #login-username: admin
+        #login-password: admin
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: false
+        wall:
+          config:
+            multi-statement-allow: true
+
+  redis:
+    open: true
+    cluster:
+      nodes:
+        - 10.1.1.161:6379
+        - 10.1.1.162:6379
+        - 10.1.1.163:6379
+        - 10.1.1.111:6379
+        - 10.1.1.112:6379
+        - 10.1.1.113:6379
+        - 10.1.1.114:6379
+        - 10.1.2.111:6379
+        - 10.1.2.112:6379
+        - 10.1.2.113:6379
+        - 10.1.2.114:6379
+        - 10.1.2.115:6379
+
+#        - 10.1.3.12:6379
+#        - 10.1.1.101:6379
+#        - 10.1.1.12:6379
+#        - 10.1.2.15:6379
+#        - 10.1.1.13:6379
+#        - 10.1.2.14:6379
+#        - 10.1.1.14:6379
+#        - 10.1.1.103:6379
+#        - 10.1.2.13:6379
+#        - 10.1.2.11:6379
+#        - 10.1.1.102:6379
+#        - 10.1.3.11:6379
+#        - 10.1.1.11:6379
+#        - 10.1.2.12:6379
+      max-redirects: 3
+    timeout: 6000ms  # 连接超时时长（毫秒）
+    jedis:
+      pool:
+        max-active: 1000  # 连接池最大连接数（使用负值表示没有限制）
+        max-wait: -1ms      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-idle: 10      # 连接池中的最大空闲连接
+        min-idle: 5       # 连接池中的最小空闲连接
+  profiles:
+    active: prod
+
+##多数据源的配置
+dynamic:
+  datasource:
+    common:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://cp-cloud-mysql-tiku-internal.canpoint.cn:3316/tiku_common?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+      username: u-tiku-rwx
+      password: 'tikuCp&*(2021'
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        #login-username: admin
+        #login-password: admin
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: false
+        wall:
+          config:
+            multi-statement-allow: true
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+#搜索引擎配置
+elasticsearch:
+  #多个node用逗号隔开
+  clusterNodes: cp-cloud-es-tiku-internal.canpoint.cn:9200
+
+
+#阿里云OSS配置
+oss:
+  endpoint: oss-cn-hangzhou-internal.aliyuncs.com
+  url: http://cp-cloud-files-tiku.oss-cn-hangzhou.aliyuncs.com
+  accessKeyId: TZC68mOapnQ8cwUM
+  secretAccessKey: 1wfN8235HQ2eLnCa5s9kZyG4nQcxBP
+  bucketName: cp-cloud-files-tiku
+
+#网关域名
+apigateway-domain :
+  defaultName : http://api.canpoint.cn
+
+apigateway :
+  accessKeyID: c0e72768-b32c-4dd4-b7b8-6720c9ab1532
+  accessKeySecret: f1f2dd74-7678-490d-bd34-2cab88721394
+  appKey: d03a9d03d4cf63ba6a618490bf96b3e1
+  appSecret: bd9d99bdb7ceb69a8dff3223743a7b25
+  originIp: 120.26.142.217
+
+#网关接口配置文件
+apiconstant-config:
+  name: apiConstantProd.properties
+
+cronjobs:
+  open: true # 是否执行定时任务  true开启   false关闭
+  poolSize: 50
+autosplit:
+  open: false # 是否启用自动拆题  true开启   false关闭
+
+#试题结构标记图片
+question-structure:
+  imgPath: http://static-file-01-cdn.canpoint.cn/tiku/img/edit/
+
+#文本相似度
+text-sim:
+  url: http://10.1.1.99/search/api
