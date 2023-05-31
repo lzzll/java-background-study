@@ -1,0 +1,13 @@
+参照博客：https://blog.csdn.net/qq_38526573/article/details/103518010?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1-103518010-blog-108521332.pc_relevant_aa2&spm=1001.2101.3001.4242.2&utm_relevant_index=3
+
+1、添加oauth的相关依赖；
+    见pom文件中oauth部分的相关依赖
+2、需要在security配置文件中初始化AuthenticationManager配置，该配置在oauth中会用到；
+3、项目中必须要创建供oauth校验的几张权限表，具体表字段的含义可以见博客；
+4、最重要的客户端和oauth进行整合的表为”oauth_client_details“，给资源服务器做配置的时候（继承ResourceServerConfigurerAdapter）需要给资源配置一个resourceId；
+    客户端是否拥有该微服务的访问权限就取决于在”oauth_client_details“表的resource_ids字段中是否配置有微服务的resourceId；
+登录访问流程：
+    a、首先需要在认证服务器上输入用户的账号、密码进行登录；
+    b、登录成功之后访问 http://localhost:8885/oauth/authorize?response_type=code&client_id=lzzll_oauth 此认证接口；
+        response_type可以指定为不同的模式，访问之后可以获取随机生成的code；
+    c、拿着生成的code调取 http://localhost:8885/oauth/token 接口换取有效的token去访问资源；

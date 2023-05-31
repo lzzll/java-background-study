@@ -1,0 +1,24 @@
+server:
+  # tomcat:
+#    max-swallow-size: 100MB
+#    max-http-post-size: 100MB
+#    max-threads: 200
+  #    uri-encoding: UTF-8
+#    max-threads: 1000
+#    min-spare-threads: 30
+#  tomcat:
+#    max-http-post-size: 4MB
+  max-http-header-size: 204800
+  port: 8080
+  servlet:
+    context-path: /study
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1:27017/study_test
+      # 上方为明确指定某个数据的用户进行连接
+      # 也可以使用admin 数据库中的用户进行连接  统一到admin 数据库进行认证
+      # admin 用户认证 url 写法： mongodb://账户:密码%40@ip:端口/数据库名?authSource=admin&authMechanism=SCRAM-SHA-1
+      # mongodb数据库与mysql不一样 mysql 一个普通用户可以管理多个数据库，但是mongo每一个库都有一个独立的管理用户，连接时需要输入对应用户密码
+#      uri: mongodb://用户名:密码@服务器IP:端口/数据库名

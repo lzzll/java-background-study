@@ -11,10 +11,18 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.ExecuteException;
+import org.apache.commons.exec.ExecuteResultHandler;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.docx4j.Docx4J;
+import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 
 import java.io.*;
+import java.util.UUID;
+import java.util.concurrent.Semaphore;
 
 /**
  * @Author lf
@@ -24,17 +32,21 @@ import java.io.*;
 @Slf4j
 public class Word2PdfTest {
 
-    public static void main(String[] args) {
-        String inputFile = "C:\\Users\\lf\\Desktop\\docx2pdf\\mathtable.docx";
+    public static void main(String[] args) throws Exception {
+        String inputFile = "C:\\Users\\lf\\Desktop\\docx2pdf\\table.docx";
 //        String inputFile = "C:\\Users\\lf\\Desktop\\docx2pdf\\chinese.docx";
-        String outputFile = "C:\\Users\\lf\\Desktop\\docx2pdf\\444.pdf";
+        String outputFile = "C:\\Users\\lf\\Desktop\\docx2pdf\\555.pdf";
         // 方式一
 //        itextPdfWord2Pdf(inputFile,outputFile);
         // 方式二
 //        asposeWord2Pdf(inputFile,outputFile);
         // 方式三
-        office2PDF(inputFile,outputFile);
+//        office2PDF(inputFile,outputFile);
         // 方式四
+//        libreoffice(inputFile,outputFile);
+//        convert(inputFile,outputFile);
+        // 通过docx4j转pdf
+        docx4JToPdf(inputFile,outputFile);
 
     }
 
@@ -178,10 +190,17 @@ public class Word2PdfTest {
     }
 
 
+    /**
+     * 通过libreoffice将docx文档转为pdf文档
+     * @param sourceFile
+     * @param destFile
+     * @return
+     */
     private static int libreoffice(String sourceFile, String destFile){
         try {
             Runtime run = Runtime.getRuntime();
-            Process process1 = run.exec(String.format("libreoffice --invisible --math --convert-to pdf --outdir %s %s", destFile, sourceFile));
+//            Process process1 = run.exec(String.format("libreoffice --invisible --math --convert-to pdf --outdir %s %s", destFile, sourceFile));
+            Process process1 = run.exec(String.format("libreoffice --invisible --convert-to pdf --outdir  %s %s", destFile, sourceFile));
             if (process1.waitFor() != 0){
                 return -1;
             }
@@ -197,6 +216,54 @@ public class Word2PdfTest {
             return -1;
         }
     }
+
+    public static File convert(String sourceFile, String destFile) throws Exception {
+        DefaultExecutor exec = new DefaultExecutor();
+        File tempFolder = new File(System.getProperty("java.io.tmpdir"), "office2pdf-" + UUID.randomUUID());
+        // 同步等待
+        Semaphore semaphore = new Semaphore(1);
+        semaphore.acquire();
+        ExecuteResultHandler erh = new ExecuteResultHandler() {
+            @Override
+            public void onProcessComplete(int i) {
+                semaphore.release();
+                //转换完成逻辑
+            }
+
+            @Override
+            public void onProcessFailed(ExecuteException e) {
+                semaphore.release();
+                //转换失败逻辑
+                e.printStackTrace();
+            }
+        };
+        String command = "soffice --invisible --convert-to pdf --outdir \"" + sourceFile + "\" \"" + destFile + "\"";
+        System.out.println("执行office文件转换任务，命令为" + command);
+        exec.execute(CommandLine.parse(command), erh);
+        // 等待执行完成
+        semaphore.acquire();
+        File file = new File(tempFolder.getAbsolutePath() + File.separator + sourceFile.substring(0, sourceFile.indexOf(".")) + ".pdf");
+        if (!file.exists()) {
+            // 转换失败逻辑
+        }
+        return file;
+    }
+
+
+    /**
+     * docx4j实现docx转pdf
+     * @param sourceFile
+     * @param destFile
+     */
+    private static void docx4JToPdf(String sourceFile, String destFile){
+        try {
+            WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(new File(sourceFile));
+            Docx4J.toPDF(wordMLPackage, new FileOutputStream(new File(destFile)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }

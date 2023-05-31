@@ -288,6 +288,17 @@
 			<version>1.13.1</version>
 		</dependency>
 
+		<!-- docx4j实现docx文档转为pdf -->
+		<dependency>
+			<groupId>org.docx4j</groupId>
+			<artifactId>docx4j</artifactId>
+			<version>6.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.docx4j</groupId>
+			<artifactId>docx4j-export-fo</artifactId>
+			<version>6.0.0</version>
+		</dependency>
 
 		<!--        <dependency>-->
 		<!--            <groupId>org.freemarker</groupId>-->
@@ -368,6 +379,12 @@
 			<groupId>com.artofsolving</groupId>
 			<artifactId>jodconverter</artifactId>
 			<version>2.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-exec</artifactId>
+			<version>1.3</version>
 		</dependency>
 
 	</dependencies>

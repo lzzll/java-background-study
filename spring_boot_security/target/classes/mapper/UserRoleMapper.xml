@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.lzzll.security.mapper.UserRoleMapper">
+    <select id="findByUserId" resultType="UserRoleEntity">
+        SELECT t1.id,t1.user_guid AS userGuid,t1.role_id AS roleId ,t2.role_name AS roleName,t2.role_path AS rolePath from user_role t1 LEFT JOIN role t2 on t1.role_id = t2.id and t1.user_guid = #{userGuid};
+    </select>
+</mapper>

@@ -1,0 +1,38 @@
+1.下载ActiveMQ
+    去官方网站下载：http://activemq.apache.org/
+2.运行ActiveMQ
+    解压缩apache-activemq-5.14.0-bin.zip，然后双击apache-activemq-5.14.0\bin\activemq.bat运行ActiveMQ程序或者直接在命令行中输入"路径\apache-activemq-5.14.0\bin\activemq.bat"来运行activemq。
+    启动ActiveMQ以后，登陆：http://localhost:8161/admin/ ,账户和密码都是admin
+3.启动当前项目，调用测试接口进行测试
+
+
+遇见问题
+	1、activemq不同的版本对应不同的jdk版本，一定要注意机器上的版本和activemq的版本要对应
+		例如：activemq 5.17版本需要对应 jdk11+版
+			 activemq 5.16版本需要对应 jdk8+版
+	2、配置activemq时，配置一定要在spring配置后，否则activemq的配置无法生效
+		spring:
+          activemq:
+            broker-url: tcp://localhost:61616
+            #true 表示使用内置的MQ，false则连接activemq服务器
+            in-memory: false
+            user: admin
+            password: admin
+            # 如果是true,则是Topic；如果是false或者默认，则是queue。
+            jms:
+              pub-sub-domain: false
+            pool:
+              #true表示使用连接池；false时，每发送一条数据创建一个连接
+              # 使用queue(点对点)方式是，pool.enable要设置为false，默认使用的是queue方式，使用topic(订阅)方式是设置为true,同时要添加spring.jms.pub-sub-domain=true
+              enabled: false
+              #连接池最大连接数
+              max-connections: 10
+              #空闲的连接过期时间，默认为30秒
+              idle-timeout: 30s
+     3、指定了in-memory为true会链接外部的activemq服务器，否则使用的则是内部的activemq
+     4、多个消费者监听同一个队列，会轮询处理消息，不会重复处理同一个消息，多个生产者和消费者都可以分布在不同的项目中，只需要在多个项目中添加好依赖，配置好监听器的配置，标好注解即可；
+     5、监听topic主题的消息必须自定义监听器，否则无法收到消息；
+
+参照博客：
+     1、https://blog.csdn.net/qq_26383975/article/details/124943780
+     2、https://blog.csdn.net/weixin_45698637/article/details/123443728

@@ -1,0 +1,9 @@
+1、springSecurity中最关键的配置类是“WebSecurityConfigurerAdapter”，书写springSecurity的配置需要继承“WebSecurityConfigurerAdapter”
+    a.复写“configure(AuthenticationManagerBuilder auth)”接口，指定访问项目的用户和角色；
+    b.复写“configure(HttpSecurity http)”接口，指定访问的规则，什么角色可以访问什么接口；
+2、“WebSecurityConfigurerAdapter”可以被继承多次，每个都可以配置单独的访问规则，通过@Order()注解来指定访问顺序，该顺序不能重复，否则启动项目会报错；
+3、spring中@Component和@Configure注解的异同点：@Configure注解本质上就是@Component注解，可以理解为@Configure注解是单例的，@Component注解是多例的；
+报错解决：
+    1、配置中没有指定登录页面时spring会提供一个默认的登录页面，如果自己指定了登录页但是地址写错了启动项目的时候会报错；
+    2、启动项目时报nested exception is java.lang.IllegalArgumentException: Property 'sqlSession错误，可能是启动类上加多了无用配置@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})导致的；
+    3、如果没有加2中的配置，依旧报2中的错误，检查关于mysql的配置，可能是配置错误导致的；

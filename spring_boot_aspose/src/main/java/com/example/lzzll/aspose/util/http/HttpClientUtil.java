@@ -23,7 +23,7 @@ import java.util.*;
 @Slf4j
 public class HttpClientUtil {
 
-    private final static String testUrl = "http://124.70.50.43:9006/eprint/queryBoxBasicInfo";
+    private final static String testUrl = "http://39.105.162.131:8080/eprint-web/eprint/queryBoxBasicInfo";
 
     private final static String appId = "123456789";
 
@@ -160,7 +160,7 @@ public class HttpClientUtil {
 
 
     public static void main(String[] args) {
-//        postWithForm();
+        postWithForm();
 //        postWithJson();
 
         // get有参请求测试
@@ -174,12 +174,12 @@ public class HttpClientUtil {
 //        System.out.println(json);
 
         // get无参请求测试
-        HashMap<String, Object> map = new HashMap<>();
-        Header header = new Header();
-        header.setName("CANPOINTTOKEN");
-        header.setValue("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyR3VpZCI6IlIyWlBNMjE0VUVnNVJHTm5aMEZ1UlRkUGJsRTVVVDA5IiwiZXhwIjoxNjY3NTMxNTkwfQ.TKmlfhye7kLk-ZdbuEc3TMR4lym2qPkR3fvNMw-jLYw");
-        JSONObject json = getWithParam("http://39.105.162.131:8080/itembank-factory/tikuPreBatch/queryPublishDepts", map, Collections.singletonList(header));
-        System.out.println(json);
+//        HashMap<String, Object> map = new HashMap<>();
+//        Header header = new Header();
+//        header.setName("CANPOINTTOKEN");
+//        header.setValue("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyR3VpZCI6IlIyWlBNMjE0VUVnNVJHTm5aMEZ1UlRkUGJsRTVVVDA5IiwiZXhwIjoxNjY3NTMxNTkwfQ.TKmlfhye7kLk-ZdbuEc3TMR4lym2qPkR3fvNMw-jLYw");
+//        JSONObject json = getWithParam("http://39.105.162.131:8080/itembank-factory/tikuPreBatch/queryPublishDepts", map, Collections.singletonList(header));
+//        System.out.println(json);
 
     }
 

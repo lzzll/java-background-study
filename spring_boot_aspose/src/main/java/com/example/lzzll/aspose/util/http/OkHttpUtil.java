@@ -19,7 +19,7 @@ import java.util.Map;
 public class OkHttpUtil {
 
 
-    private final static String testUrl = "http://124.70.50.43:9006/eprint/queryBoxBasicInfo";
+    private final static String testUrl = "http://39.105.162.131:8080/eprint-web/eprint/queryBoxBasicInfo";
 
     private final static String appId = "123456789";
 
