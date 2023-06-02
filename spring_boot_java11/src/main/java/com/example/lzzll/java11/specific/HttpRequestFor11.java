@@ -11,6 +11,7 @@ import java.util.concurrent.ExecutionException;
  * @Author lf
  * @Date 2023/5/31 15:51
  * @Description: java11中修改了发送http客户端的方式
+ *               java8中原生和使用第三方包发送http请求的方式参见spring_boot_aspose模块中的com.example.lzzll.aspose.util包下的工具类
  */
 public class HttpRequestFor11 {
 

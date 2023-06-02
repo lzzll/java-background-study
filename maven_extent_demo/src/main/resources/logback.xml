@@ -1,0 +1,131 @@
+<configuration>
+
+    <property name="PROJECT_NAME" value="test-log"/>
+    <!-- 定义命令行打印 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <pattern>
+                    <pattern>
+                        {
+                        "module": "%X{module}",
+                        "timestamp": "%date{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}",
+                        "level": "%level",
+                        "request_id": "%X{request_id}",
+                        "parent_id": "%X{parent_id}",
+                        "span_id": "%X{span_id}",
+                        "user_id": "%X{user_id}",
+                        "thread": "%thread",
+                        "message": "%message",
+                        "start_time": "%X{start_time}",
+                        "end_time": "%X{end_time}",
+                        "method": "%X{method}",
+                        "logger": {
+                            "path": "%logger",
+                            "class": "%logger{0}",
+                            "line": "%line"
+                        },
+                        "stack_trace": "%exception"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+    <!-- 定义全量日志输出 -->
+<!--    <appender name="TRACE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        &lt;!&ndash; 定义滚动策略 &ndash;&gt;-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            &lt;!&ndash; 定义滚动的时间粒度 &ndash;&gt;-->
+<!--            <fileNamePattern>../alidata1/tomcat/logs/${PROJECT_NAME}.%d{yyyy-MM-dd-HH}.log</fileNamePattern>-->
+<!--            <maxHistory>128</maxHistory>-->
+<!--            <totalSizeCap>10GB</totalSizeCap>-->
+<!--        </rollingPolicy>-->
+<!--        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">-->
+<!--            <providers>-->
+<!--                &lt;!&ndash; 添加 Logback JSON 格式化提供者 &ndash;&gt;-->
+<!--                <pattern>-->
+<!--                    {-->
+<!--                    "module": "%X{module}",-->
+<!--                    "timestamp": "%date{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}",-->
+<!--                    "level": "%level",-->
+<!--                    "request_id": "%X{request_id}",-->
+<!--                    "parent_id": "%X{parent_id}",-->
+<!--                    "span_id": "%X{span_id}",-->
+<!--                    "user_id": "%X{user_id}",-->
+<!--                    "thread": "%thread",-->
+<!--                    "message": "%message",-->
+<!--                    "start_time": "%X{start_time}",-->
+<!--                    "end_time": "%X{end_time}",-->
+<!--                    "method": "%X{method}",-->
+<!--                    "logger": {-->
+<!--                    "path": "%logger",-->
+<!--                    "class": "%logger{0}",-->
+<!--                    "line": "%line"-->
+<!--                    },-->
+<!--                    "stack_trace": "%exception"-->
+<!--                    }-->
+<!--                </pattern>-->
+<!--            </providers>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+
+    <!--Error级别以上日志输出-->
+    <appender name="ERROR"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 定义日志级别 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <!-- 定义滚动策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 定义滚动的时间粒度 -->
+            <fileNamePattern>../alidata1/tomcat/logs/${PROJECT_NAME}-error.%d{yyyy-MM-dd-HH}.log</fileNamePattern>
+            <maxHistory>128</maxHistory>
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <pattern>
+                    <pattern>
+                        {
+                        "module": "%X{module}",
+                        "timestamp": "%date{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}",
+                        "level": "%level",
+                        "request_id": "%X{request_id}",
+                        "parent_id": "%X{parent_id}",
+                        "span_id": "%X{span_id}",
+                        "user_id": "%X{user_id}",
+                        "thread": "%thread",
+                        "message": "%message",
+                        "start_time": "%X{start_time}",
+                        "end_time": "%X{end_time}",
+                        "method": "%X{method}",
+                        "logger": {
+                        "path": "%logger",
+                        "class": "%logger{0}",
+                        "line": "%line"
+                        },
+                        "stack_trace": "%exception"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+
+    <!-- 定义根 Logger -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+<!--        <appender-ref ref="TRACE"/>-->
+        <appender-ref ref="ERROR"/>
+
+        <!-- DB记录日志，待讨论 -->
+<!--
+        <appender-ref ref="ERROR_LOG_DB"/>
+-->
+
+    </root>
+</configuration>

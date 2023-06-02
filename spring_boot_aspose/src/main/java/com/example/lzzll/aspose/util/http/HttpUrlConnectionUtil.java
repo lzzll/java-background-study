@@ -102,7 +102,7 @@ public class HttpUrlConnectionUtil {
             //关闭远程连接
             connection.disconnect();
         }
-        return result.toString();
+         return result.toString();
     }
 
     /**
@@ -205,25 +205,25 @@ public class HttpUrlConnectionUtil {
 
     public static void main(String[] args) {
         // 发送post请求
-        Map<String,String> postHeader =  new LinkedHashMap<>();
-        long timestamp = System.currentTimeMillis();
-        String sign = SecureUtil.md5().digestHex(appId + appKey + timestamp);
-        postHeader.put("appId", appId);
-        postHeader.put("sign", sign);
-        postHeader.put("timestamp", String.valueOf(timestamp));
-        String postParam = "key="+LIAN_KE_ENCODE_STR;
-        String postMessage = doPost(postTestUrl, postParam,postHeader);
-        System.out.println(postMessage);
+//        Map<String,String> postHeader =  new LinkedHashMap<>();
+//        long timestamp = System.currentTimeMillis();
+//        String sign = SecureUtil.md5().digestHex(appId + appKey + timestamp);
+//        postHeader.put("appId", appId);
+//        postHeader.put("sign", sign);
+//        postHeader.put("timestamp", String.valueOf(timestamp));
+//        String postParam = "key="+LIAN_KE_ENCODE_STR;
+//        String postMessage = doPost(postTestUrl, postParam,postHeader);
+//        System.out.println(postMessage);
 
         // 发送get请求
-//        Map<String,String> param = new LinkedHashMap<>();
-//        param.put("page","1");
-//        param.put("pageSize","1");
-//        Map<String,String> header =  new LinkedHashMap<>();
-//        header.put("CANPOINTTOKEN","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyR3VpZCI6IlIyWlBNMjE0VUVnNVJHTm5aMEZ1UlRkUGJsRTVVVDA5IiwiZXhwIjoxNjg1NTMwMjIxfQ._F8QjtpgV0ySVAQI0SE1KuCioaljLzGJ4g-K7878lKk");
-//        header.put("Content-Type","application/Json; charset=UTF-8");
-//        String message = doGet(getTestUrl,param,header);
-//        System.out.println(message);
+        Map<String,String> param = new LinkedHashMap<>();
+        param.put("page","1");
+        param.put("pageSize","1");
+        Map<String,String> header =  new LinkedHashMap<>();
+        header.put("CANPOINTTOKEN","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyR3VpZCI6IlIyWlBNMjE0VUVnNVJHTm5aMEZ1UlRkUGJsRTVVVDA5IiwiZXhwIjoxNjg1NTk3MTcyfQ.LUh1XiGqV0enlQYddjempyrOq3tvAOEm1PbGDSeUDFI");
+        header.put("Content-Type","application/Json; charset=UTF-8");
+        String message = doGet(getTestUrl,param,header);
+        System.out.println(message);
     }
 
 }

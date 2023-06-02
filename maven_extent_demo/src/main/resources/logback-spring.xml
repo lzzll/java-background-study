@@ -1,0 +1,102 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<configuration>-->
+<!--    <include resource="org/springframework/boot/logging/logback/base.xml" />-->
+<!--    <logger name="org.springframework.web" level="INFO"/>-->
+<!--    <logger name="org.springboot.sample" level="TRACE" />-->
+<!--    <logger name="org.apache.kafka.clients.producer.ProducerConfig" level="off" />-->
+
+<!--    <springProperty scope="context" name="CLOUD_LOGS_DRIVER" source="spring.datasource.druid.driver-class-name" defaultValue=""/>-->
+<!--    <springProperty scope="context" name="CLOUD_LOGS_URL" source="spring.datasource.druid.url" defaultValue=""/>-->
+<!--    <springProperty scope="context" name="CLOUD_LOGS_USERNAME" source="spring.datasource.druid.username" defaultValue=""/>-->
+<!--    <springProperty scope="context" name="CLOUD_LOGS_PASSWORD" source="spring.datasource.druid.password" defaultValue=""/>-->
+
+
+<!--    <property name="project_name" value="content-plan"/>-->
+<!--    <include resource="org/springframework/boot/logging/logback/defaults.xml" />-->
+<!--    <property name="FILE_LOG_PATTERN" value="${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } -&#45;&#45; [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>-->
+<!--    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/logs}}}//${project_name}}"/>-->
+<!--    <property name="LOG_FILE_TEST" value="/alidata1/tomcat/logs/${project_name}"/>-->
+
+<!--    <appender name="TESTFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <encoder>-->
+<!--            <pattern>${FILE_LOG_PATTERN}</pattern>-->
+<!--        </encoder>-->
+<!--        <file>${LOG_FILE_TEST}.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            &lt;!&ndash;<fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>&ndash;&gt;-->
+<!--            <fileNamePattern>${LOG_FILE_TEST}.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+<!--            &lt;!&ndash;<maxFileSize>${LOG_FILE_MAX_SIZE:-100MB}</maxFileSize>&ndash;&gt;-->
+<!--            <maxHistory>${LOG_FILE_MAX_HISTORY:-0}</maxHistory>-->
+<!--        </rollingPolicy>-->
+<!--    </appender>-->
+
+<!--    &lt;!&ndash;显示sql日志&ndash;&gt;-->
+<!--    &lt;!&ndash;<logger name="org.springframework.jdbc.core" additivity="false" level="DEBUG" >&ndash;&gt;-->
+<!--    &lt;!&ndash;print less info when select[not print 'Mapping column...' info in BeanPropertyRowMapper]&ndash;&gt;-->
+<!--    <logger name="org.springframework.jdbc.core.JdbcTemplate" additivity="false" level="DEBUG" >-->
+<!--        <appender-ref ref="CONSOLE" />-->
+<!--        <appender-ref ref="FILE" />-->
+<!--    </logger>-->
+
+<!--    &lt;!&ndash; 将错误日志写入数据库 &ndash;&gt;-->
+<!--    &lt;!&ndash;    <appender name="DB_ERROR_LOG" class="ch.qos.logback.classic.db.DBAppender">&ndash;&gt;-->
+<!--    <appender name="DB_ERROR_LOG" class="com.canpoint.content.plan.config.LogDBAppender">-->
+<!--        <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">-->
+<!--            <dataSource class="org.apache.commons.dbcp.BasicDataSource">-->
+<!--                <driverClassName>${CLOUD_LOGS_DRIVER}</driverClassName>-->
+<!--                <url>${CLOUD_LOGS_URL}</url>-->
+<!--                <username>${CLOUD_LOGS_USERNAME}</username>-->
+<!--                <password>${CLOUD_LOGS_PASSWORD}</password>-->
+<!--            </dataSource>-->
+<!--        </connectionSource>-->
+<!--        &lt;!&ndash;这里设置日志级别为error&ndash;&gt;-->
+<!--        <filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+<!--            <level>error</level>-->
+<!--            <onMatch>ACCEPT</onMatch>-->
+<!--            <onMismatch>DENY</onMismatch>-->
+<!--        </filter>-->
+<!--    </appender>-->
+
+<!--    &lt;!&ndash; 异步日志记录 &ndash;&gt;-->
+<!--    <appender name="ASYNC_APPENDER" class="ch.qos.logback.classic.AsyncAppender">-->
+<!--        　　<appender-ref ref="DB_ERROR_LOG" />-->
+<!--        　　<includeCallerData>true</includeCallerData>-->
+<!--    </appender>-->
+
+
+<!--    &lt;!&ndash; 开发环境 &ndash;&gt;-->
+<!--    <springProfile name="dev">-->
+<!--        <logger name="org.springframework.web" level="INFO"/>-->
+<!--        <logger name="org.springboot.sample" level="INFO" />-->
+<!--        <root level="INFO">-->
+<!--            <appender-ref ref="FILE"/>-->
+<!--            <appender-ref ref="CONSOLE"/>-->
+<!--            <appender-ref ref="ASYNC_APPENDER"/>-->
+<!--            <appender-ref ref="TESTFILE"/>-->
+<!--        </root>-->
+<!--    </springProfile>-->
+
+<!--    &lt;!&ndash; 测试环境 &ndash;&gt;-->
+<!--    <springProfile name="test">-->
+<!--        <logger name="org.springframework.web" level="INFO"/>-->
+<!--        <logger name="org.springboot.sample" level="INFO" />-->
+<!--        <root level="INFO">-->
+<!--            <appender-ref ref="FILE"/>-->
+<!--            <appender-ref ref="TESTFILE"/>-->
+<!--            <appender-ref ref="CONSOLE"/>-->
+<!--            <appender-ref ref="ASYNC_APPENDER"/>-->
+<!--        </root>-->
+<!--    </springProfile>-->
+
+<!--    &lt;!&ndash; 生产环境 &ndash;&gt;-->
+<!--    <springProfile name="prod">-->
+<!--        <logger name="org.springframework.web" level="INFO"/>-->
+<!--        <logger name="org.springboot.sample" level="INFO" />-->
+<!--        <root level="INFO">-->
+<!--            <appender-ref ref="FILE"/>-->
+<!--            <appender-ref ref="CONSOLE"/>-->
+<!--            <appender-ref ref="ASYNC_APPENDER"/>-->
+<!--        </root>-->
+<!--    </springProfile>-->
+
+<!--</configuration>-->
