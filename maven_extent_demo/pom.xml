@@ -29,6 +29,18 @@
 <!--            <artifactId>framework-swagger</artifactId>-->
 <!--            <version>1.0.0-SNAPSHOT</version>-->
 <!--        </dependency>-->
+        <!-- 测试启动类 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
 <!--    <build>-->
