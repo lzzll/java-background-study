@@ -19,7 +19,7 @@
                         "message": "%message",
                         "start_time": "%X{start_time}",
                         "end_time": "%X{end_time}",
-                        "method": "%X{method}",
+                        "method": "%method",
                         "logger": {
                             "path": "%logger",
                             "class": "%logger{0}",
@@ -101,7 +101,7 @@
                         "message": "%message",
                         "start_time": "%X{start_time}",
                         "end_time": "%X{end_time}",
-                        "method": "%X{method}",
+                        "method": "%method",
                         "logger": {
                         "path": "%logger",
                         "class": "%logger{0}",

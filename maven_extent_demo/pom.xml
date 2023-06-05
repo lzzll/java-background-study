@@ -14,7 +14,9 @@
 <!--    <description>maven_extent_demo</description>-->
     <packaging>war</packaging>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+        <swagger.version>2.9.2</swagger.version>
     </properties>
     <dependencies>
         <!-- 引用父目录中统一封装的日志框架-->
@@ -23,12 +25,13 @@
             <artifactId>framework-log</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
-        <!-- 引用父目录中统一封装的swagger框架-->
+        <!-- 引用父目录中统一封装的swagger框架，目前无法引入，有问题未解决-->
 <!--        <dependency>-->
 <!--            <groupId>cn.canpoint.qcenter</groupId>-->
 <!--            <artifactId>framework-swagger</artifactId>-->
 <!--            <version>1.0.0-SNAPSHOT</version>-->
 <!--        </dependency>-->
+
         <!-- 测试启动类 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
