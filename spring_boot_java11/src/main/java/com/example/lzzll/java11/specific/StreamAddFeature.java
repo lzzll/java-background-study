@@ -5,6 +5,7 @@ import com.example.lzzll.java11.entity.PersonEntity;
 import com.example.lzzll.java11.entity.Review;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -63,6 +64,11 @@ public class StreamAddFeature {
         // 增加一个求和函数可通过编译和正确计算
 //        Integer totalAge = personList.stream().reduce(0, (preTotalAge, user) -> preTotalAge + user.getAge(), Integer::sum);
 //        System.out.println(String.format("各用户的平均年龄：%.2f",totalAge.doubleValue()/personList.size()));
+
+        // 字符串转数组
+        String[] array = {"111","222"};
+        Arrays.stream(array).map(a->a+=100).map(String::toUpperCase).forEach(System.out::println);
+
         // 复杂案例：计算一个网站用户的评分，该评分是所有用户所有评论的平均值
         person1.getCalculatePoint().add(new Review(3.0,"common"));
         person1.getCalculatePoint().add(new Review(5.0,"perfect"));
