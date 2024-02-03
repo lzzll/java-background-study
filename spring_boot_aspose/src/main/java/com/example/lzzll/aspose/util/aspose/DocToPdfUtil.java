@@ -1,13 +1,18 @@
 package com.example.lzzll.aspose.util.aspose;
 
+import com.aspose.slides.Presentation;
 import com.aspose.words.SaveFormat;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.pdfbox.pdmodel.PDDocument;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
+import java.util.UUID;
 
 /**
  * @Author lf
@@ -70,9 +75,17 @@ public class DocToPdfUtil {
     public static void main(String[] args) {
 
         // docx格式 https://qp-tiku-test.oss-cn-beijing.aliyuncs.com/2.docx
-        docToPdf("https://qp-tiku-test.oss-cn-beijing.aliyuncs.com/2.docx","C:\\Users\\lf\\Desktop\\ttt6.pdf");
+//        docToPdf("https://qp-tiku-test.oss-cn-beijing.aliyuncs.com/2.docx","C:\\Users\\lf\\Desktop\\ttt6.pdf");
         // doc格式 https://qp-tiku-test.oss-cn-beijing.aliyuncs.com/docTest.doc
-        docToPdf("https://qp-tiku-test.oss-cn-beijing.aliyuncs.com/docTest.doc","C:\\Users\\lf\\Desktop\\ttt7.pdf");
+//        docToPdf("https://qp-tiku-test.oss-cn-beijing.aliyuncs.com/docTest.doc","C:\\Users\\lf\\Desktop\\ttt7.pdf");
+
+        // 页数异常的文档地址  http://qp-tiku-test.oss-cn-beijing.aliyuncs.com/smart-book/docx/e0ee706f-fa4c-4b67-9a26-37cb9c0e01d7.docx
+//        int pageCount = getFilePages("http://qp-tiku-test.oss-cn-beijing.aliyuncs.com/smart-book/docx/e0ee706f-fa4c-4b67-9a26-37cb9c0e01d7.docx");
+//        System.out.println(pageCount);
+
+        docToPdf("http://qp-tiku-test.oss-cn-beijing.aliyuncs.com/smart-book/docx/e0ee706f-fa4c-4b67-9a26-37cb9c0e01d7.docx","C:\\Users\\lf\\Desktop\\ttt8.pdf");
 
     }
+
+
 }

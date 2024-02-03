@@ -22,7 +22,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -71,12 +70,21 @@
 		</dependency>
 
 		<!--doc文档转化为pdf-->
+<!--		<dependency>-->
+<!--			<groupId>aspose-words-20.8.0-jdk17</groupId>-->
+<!--			<artifactId>aspose</artifactId>-->
+<!--			<version>20.8.0</version>-->
+<!--			<scope>system</scope>-->
+<!--			<systemPath>${project.basedir}/src/main/resources/lib/aspose-words-20.8.0-jdk17.jar</systemPath>-->
+<!--		</dependency>-->
+
+		<!--doc文档转化为pdf-->
 		<dependency>
 			<groupId>aspose-words-20.8.0-jdk17</groupId>
 			<artifactId>aspose</artifactId>
 			<version>20.8.0</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/resources/lib/aspose-words-20.8.0-jdk17.jar</systemPath>
+			<systemPath>${project.basedir}/src/main/resources/lib/aspose-words-21.1.0-jdk17.jar</systemPath>
 		</dependency>
 
 		<!-- 转换excel为pdf，没有水印 -->
@@ -131,6 +139,17 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpasyncclient</artifactId>
 			<version>4.1.4</version>
+		</dependency>
+		<!--请求重发的jar包-->
+		<dependency>
+			<groupId>org.springframework.retry</groupId>
+			<artifactId>spring-retry</artifactId>
+			<version>1.2.3.RELEASE</version>
+		</dependency>
+		<!--aop-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
 	</dependencies>
