@@ -76,8 +76,8 @@ public class TestActiviti {
         // 3.根据流程key 和 任务负责人 查询任务
         List<Task> list = taskService.createTaskQuery()
                 .processDefinitionKey("test")
-//                .taskAssignee("terry")
-                .taskAssignee("lzzll")
+                .taskAssignee("terry")
+//                .taskAssignee("lzzll")
                 .list();
         for (Task task : list) {
             System.out.println("流程实例id = " + task.getProcessInstanceId());
@@ -101,7 +101,7 @@ public class TestActiviti {
 
         List<Task> list = taskService.createTaskQuery() // 完成terry任务
                 .processDefinitionKey("test")
-                .taskAssignee("lzzll")
+                .taskAssignee("terry")
                 .list();
         if (list != null && list.size() > 0){
 //            for (Task task : list) {
